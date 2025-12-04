@@ -1,0 +1,81 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+# TODO: Write Dcocumentation e.g. Project Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+Documentation	
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	 Open Browser
+Post Condition	 Close All Browsers
+Tags    Project
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Project creation field variables
+Project name: Test-ing
+Updated project name: Test-ing 2
+Project slug: test-ing
+Deployment target: no deployment planned
+Visibility level: Private
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Create blank project
+Navigate to Create a new blank project: https://gitlab.com/projects/new#blank_project
+Input Project Name: Test-ing
+Select Account Name for Project URL
+Input Project slug: test-ing
+Select option Deployment Target: no deployment planned
+Select option Visibility Level: Private
+Submit Create Project
+Validate that message is showing Project 'Test-ing' was successfully created.
+
+	Create template project
+Navigate to Create a template project: https://gitlab.com/projects/new#create_from_template
+Select Template 'Ruby on Rails'
+Input Project Name: Test-ing
+Select Account Name for Project URL
+Input Project slug: test-ing
+Select option Visibility Level: Private
+Submit Create Project
+Validate that message is showing Project 'Test-ing' was successfully created.
+
+	Update name of template project
+Navigate to Project Page
+Navigate to Settings via dropdown menu
+Change Project Name from 'Test-ing' to 'Test-ing 2'
+Press Save Changes
+
+	Delete template project
+Navigate to Project Page
+Navigate to settings via dropdown menu
+Go to Advanced Settings
+Select Delete Project
+Enter project name to confirm
+
+
+# Negative Test examples are below write test process steps for each below test case
+
+	Create a blank project with the previous same name
+Navigate to Create a new blank project: https://gitlab.com/projects/new#blank_project
+Input Project name: Test-ing 2
+Select Account Name for Project URL
+Input Project slug: test-ing 2
+Select option Visibility Level: Private
+Submit Create Project
+Should Give an Error for the same name

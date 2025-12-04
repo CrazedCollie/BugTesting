@@ -1,0 +1,64 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition	Have project, Open browser
+Post Condition	Close all browsers
+Tags project issue
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Issue creation field variables, Updated name of the issue
+Title: buggery
+Updated title: buggery 2
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Create issue,
+Navigate to Issue page https://gitlab.com/CrazedCollie/testin-ing/-/issues
+Click New Item
+Select project name
+Input title buggery
+Input description 'thing not work'
+Submit Create Issue
+Issue should show up
+
+ 	Update name of issue,
+Navigate to Issue page https://gitlab.com/CrazedCollie/testin-ing/-/issues
+Select buggery
+Select edit
+Input new name buggery 2
+Submit Save changes
+Name should have been changed
+
+	Create second issue with previous updated name
+Navigate to Issue page https://gitlab.com/CrazedCollie/testin-ing/-/issues
+Click New Item
+Select project name
+Input title buggery
+Input description 'thing not work'
+Submit Create Issue
+Should allow creating issue with same name as previous
+
+    Delete first issue
+Navigate to Issue page https://gitlab.com/CrazedCollie/testin-ing/-/issues
+Select the first item buggery 2
+Select delete issue from dropdown
+Select delete issue to confirm
+Issue should be deleted
